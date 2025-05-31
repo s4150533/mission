@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ClimateLens ‒ Metric Similarity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="metric_similarity.css">
+</head>
+<body>
+  <!-- header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-group">
+        <img src="logo.png" alt="ClimateLens Logo" class="logo">
+        <h1 class="site-title">ClimateLens</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="mission_statement.html">Home</a></li>
+          <li><a href="stations_overview.html">Stations</a></li>
+          <li><a href="variables.html">Variables</a></li>
+          <li><a href="metric_overview.html">Metrics</a></li>
+          <li><a href="#" class="active">Similarity</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- main -->
+  <main class="content">
+    <section class="similarity-form-section">
+      <h2>Deep Dive: Metric Similarity</h2>
+      <form id="similarityForm">
+        <div class="form-row">
+          <label for="refMetric">Reference Metric</label>
+          <select id="refMetric">
+            <option value="Precipitation">Precipitation</option>
+            <option value="MaxTemp">Max Temperature</option>
+            <option value="MinTemp">Min Temperature</option>
+            <option value="Humidity">Humidity</option>
+            <option value="Sunshine">Sunshine</option>
+            <!-- etc. from description.csv -->
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="period1">Period 1</label>
+          <input type="text" id="period1" placeholder="e.g. 1970-1979">
+        </div>
+        <div class="form-row">
+          <label for="period2">Period 2</label>
+          <input type="text" id="period2" placeholder="e.g. 2010-2019">
+        </div>
+        <div class="form-row">
+          <label for="topN">Top N Similar</label>
+          <input type="number" id="topN" value="3" min="1" max="20">
+        </div>
+        <div class="form-row full-row">
+          <button type="submit">Find Similar Metrics</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="results-section">
+      <h3>Similarity Results</h3>
+      <div class="table-wrapper">
+        <table id="similarityTable">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>% Change (P1)</th>
+              <th>% Change (P2)</th>
+              <th>Difference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- injected by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>About ClimateLens</h4>
+        <p>ClimateLens delivers reliable, up-to-date Australian climate insights—track trends, monitor conditions, and make informed decisions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="stations_overview.html">Stations</a></li>
+          <li><a href="variables.html">Variables</a></li>
+          <li><a href="metric_overview.html">Metrics</a></li>
+          <li><a href="metric_similarity.html">Similarity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
+          <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ClimateLens Studio Project. All rights reserved.</p>
+      <p>Last updated: July 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('similarityForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const m = document.getElementById('refMetric').value;
+      const p1 = document.getElementById('period1').value;
+      const p2 = document.getElementById('period2').value;
+      const n  = document.getElementById('topN').value;
+      const tbody = document.querySelector('#similarityTable tbody');
+      tbody.innerHTML = '<tr><td colspan="4">Calculating…</td></tr>';
+      // TODO: call API endpoint for similarity
+      setTimeout(() => {
+        tbody.innerHTML = `
+          <tr>
+            <td>Evaporation</td>
+            <td>+5.2%</td>
+            <td>+6.0%</td>
+            <td>0.8%</td>
+          </tr>
+          <tr>
+            <td>Sunshine</td>
+            <td>+3.1%</td>
+            <td>+2.4%</td>
+            <td>0.7%</td>
+          </tr>`;
+      }, 700);
+    });
+  </script>
+</body>
+</html>

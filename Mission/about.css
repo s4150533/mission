@@ -1,0 +1,204 @@
+
+
+
+
+:root {
+  --primary: #005f73;
+  --secondary: #0077b6;
+  --bg-light: #f0f8ff;
+  --card-bg: #ffffff;
+  --font: 'Inter', sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font);
+  background: var(--bg-light);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+.site-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.logo {
+  height: 42px;
+}
+.site-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-left: 0.5rem;
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+}
+.main-nav li {
+  margin-left: 2rem;
+}
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--primary);
+  transition: color 0.3s;
+}
+.main-nav a.active,
+.main-nav a:hover {
+  color: var(--secondary);
+}
+
+/* Main */
+.about-content {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+.about-content section {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+.about-content h2,
+.about-content h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.about-content p {
+  margin-bottom: 1rem;
+}
+.about-content ul {
+  list-style: disc inside;
+  padding-left: 1rem;
+}
+
+/* Mission & History */
+.mission-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.mission-history .block {
+  flex: 1 1 calc(50% - 1rem);
+}
+
+/* Features */
+.features ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+.features li {
+  padding-left: 1rem;
+  text-indent: -1rem;
+}
+.features strong {
+  color: var(--secondary);
+}
+
+/* Team */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+.member-card {
+  text-align: center;
+}
+.member-card img {
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.5rem;
+}
+.member-card h4 {
+  margin-bottom: 0.25rem;
+  color: var(--primary);
+}
+.member-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Contact */
+.contact a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.site-footer {
+  background: #014f86;
+  color: #e0fbfc;
+  padding: 2rem 1rem;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  border-bottom: 1px solid rgba(240,255,255,0.3);
+  padding-bottom: 2rem;
+}
+.footer-col h4 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #a7cbd9;
+}
+.footer-col p,
+.footer-col ul {
+  font-size: 0.9rem;
+  color: #dff6f0;
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-col li {
+  margin-bottom: 0.5rem;
+}
+.footer-col a {
+  color: #e0fbfc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-col a:hover {
+  color: #a7cbd9;
+}
+.social-icons a {
+  margin-right: 0.5rem;
+}
+.social-icons img {
+  width: 24px;
+  filter: invert(100%);
+}
+.footer-bottom {
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(240,255,255,0.7);
+}

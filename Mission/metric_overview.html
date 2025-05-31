@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClimateLens ‒ Metric Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="metric_overview.css">
+</head>
+<body>
+  <!-- header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-group">
+        <img src="logo.png" alt="ClimateLens Logo" class="logo">
+        <h1 class="site-title">ClimateLens</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="mission_statement.html">Home</a></li>
+          <li><a href="stations.html">Stations</a></li>
+          <li><a href="variables.html">Variables</a></li>
+          <li><a href="#" class="active">Metrics</a></li>
+          <li><a href="metric_similarity.html">Similarity</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- main content -->
+  <main class="content">
+    <section class="metric-form">
+      <h2>Shallow Glance: Metric Explorer</h2>
+      <form id="filterForm">
+        <div class="form-row">
+          <label for="metricSelect">Metric</label>
+          <select id="metricSelect">
+            <option value="Precipitation">Precipitation</option>
+            <option value="MaxTemp">Maximum Temperature</option>
+            <option value="MinTemp">Minimum Temperature</option>
+            <option value="Humidity">Humidity</option>
+            <option value="Sunshine">Sunshine</option>
+            <!-- add more based on description.csv -->
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Station ID Range</label>
+          <input type="number" id="stationMin" placeholder="3000">  
+          <span class="range-sep">to</span>  
+          <input type="number" id="stationMax" placeholder="4000">
+        </div>
+        <div class="form-row">
+          <label for="dateStart">Start Date</label>
+          <input type="date" id="dateStart">
+        </div>
+        <div class="form-row">
+          <label for="dateEnd">End Date</label>
+          <input type="date" id="dateEnd">
+        </div>
+        <div class="form-row form-row--full">
+          <button type="submit">Apply Filters</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="table-section">
+      <h3>Results</h3>
+      <div class="table-wrapper">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>Station ID</th>
+              <th>Date</th>
+              <th>Value</th>
+              <th>Flag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- dynamically injected rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>About ClimateLens</h4>
+        <p>ClimateLens delivers reliable, up-to-date Australian climate insights—track trends, monitor conditions, and make informed decisions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="stations.html">Stations</a></li>
+          <li><a href="variables.html">Variables</a></li>
+          <li><a href="mission_statement.html">Home</a></li>
+          <li><a href="metric_similarity.html">Similarity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
+          <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ClimateLens Studio Project. All rights reserved.</p>
+      <p>Last updated: July 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    // Placeholder JS to demonstrate interactivity
+    document.getElementById('filterForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const metric = document.getElementById('metricSelect').value;
+      const minID = document.getElementById('stationMin').value;
+      const maxID = document.getElementById('stationMax').value;
+      const start = document.getElementById('dateStart').value;
+      const end   = document.getElementById('dateEnd').value;
+      const tbody = document.querySelector('#resultsTable tbody');
+      tbody.innerHTML = '<tr><td colspan="4">Loading…</td></tr>';
+      // TODO: Fetch data from your API or SQL endpoint
+      // For now we simulate:
+      setTimeout(() => {
+        tbody.innerHTML = `
+          <tr>
+            <td>${minID}</td>
+            <td>${start}</td>
+            <td>12.5</td>
+            <td>Y</td>
+          </tr>
+          <tr>
+            <td>${maxID}</td>
+            <td>${end}</td>
+            <td>14.2</td>
+            <td>N</td>
+          </tr>`;
+      }, 800);
+    });
+  </script>
+</body>
+</html>
